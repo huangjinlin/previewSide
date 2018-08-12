@@ -1,4 +1,4 @@
-# previewSide  
+# previewSide
 preview side plugin for chrome
 
 ## screen capture
@@ -17,3 +17,4 @@ click "reload" icon
 - 去掉多余代码
 - 回车执行刷新
 - 主动获取coding预览的url
+- previewSide发布到360市场/谷歌市场
