@@ -57,7 +57,7 @@ document.addEventListener('DOMContentLoaded', function()
 	}else{
 		// initCustomPanel();
 		// initCustomEventListen();
-		initPreviewPanel();
+		// initPreviewPanel();
 	}
 });
 
