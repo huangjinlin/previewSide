@@ -50,8 +50,8 @@ document.addEventListener('DOMContentLoaded', function()
 			$('[data-tuiguang]').parents('[data-click]').remove();
 		}
 		fuckBaiduAD();
-		initCustomPanel();
-		initCustomEventListen();
+		// initCustomPanel();
+		// initCustomEventListen();
 	}else if(location.href.indexOf('http://studio.coding.net/ws/')>-1){
 		initPreviewPanel();
 	}else{
