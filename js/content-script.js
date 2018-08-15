@@ -1,4 +1,4 @@
-﻿console.log('这是content script!');
+// ﻿console.log('这是content script!');
 // 注意，必须设置了run_at=document_start 此段代码才会生效
 document.addEventListener('DOMContentLoaded', function()
 {
@@ -78,7 +78,6 @@ function initCustomPanel()
 		</div>
 	`;
 	document.body.appendChild(panel);
-	console.log("length",$("#testPanel").llength);
 	$("#testPanel").draggable();
 }
 
@@ -203,13 +202,10 @@ function initPreviewPanel() {
 			$("#_preview_Xadapter").draggable({
 				axis: "x",
 				drag: function() {
-					console.log(this.style.right)
-					console.log(this.style.left)
 					// var v = Math.abs(parseInt(this.style.left))-5+3;
 					var v = document.documentElement.clientWidth - Math.abs(parseInt(this.style.left))-5+3;
 					_setPostion(v);
 					// var container = document.getElementById('_previewContainer');
-					// console.log("v",v)
 					// container.style.width = v+"px";
 				},
 				stop: function() {
@@ -250,7 +246,7 @@ function injectCustomJs(jsPath)
 // 接收来自后台的消息
 chrome.runtime.onMessage.addListener(function(request, sender, sendResponse)
 {
-	console.log('收到来自 ' + (sender.tab ? "content-script(" + sender.tab.url + ")" : "popup或者background") + ' 的消息：', request);
+	// console.log('收到来自 ' + (sender.tab ? "content-script(" + sender.tab.url + ")" : "popup或者background") + ' 的消息：', request);
 	if(request.cmd == 'update_font_size') {
 		var ele = document.createElement('style');
 		ele.innerHTML = `* {font-size: ${request.size}px !important;}`;
@@ -272,10 +268,10 @@ function sendMessageToBackground(message) {
 
 // 监听长连接
 chrome.runtime.onConnect.addListener(function(port) {
-	console.log(port);
+	// console.log(port);
 	if(port.name == 'test-connect') {
 		port.onMessage.addListener(function(msg) {
-			console.log('收到长连接消息：', msg);
+			// console.log('收到长连接消息：', msg);
 			tip('收到长连接消息：' + JSON.stringify(msg));
 			if(msg.question == '你是谁啊？') port.postMessage({answer: '我是你爸！'});
 		});
@@ -284,7 +280,7 @@ chrome.runtime.onConnect.addListener(function(port) {
 
 window.addEventListener("message", function(e)
 {
-	console.log('收到消息：', e.data);
+	// console.log('收到消息：', e.data);
 	if(e.data && e.data.cmd == 'invoke') {
 		eval('('+e.data.code+')');
 	}
@@ -293,10 +289,8 @@ window.addEventListener("message", function(e)
 	}
 	else if(e.data && e.data.cmd == 'openPreviewModal') {
 		var o = document.getElementById('testPanel')
-		console.log('o', o)
 		o.style["background-color"] = "#fff";
 	}else if(e.data && e.data.cmd == 'accessSubMoudleMethod') {
-		console.log("data",e.data)
 	}
 }, false);
 
